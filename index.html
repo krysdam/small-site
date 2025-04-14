@@ -24,8 +24,9 @@
         return arr[randomIndex];
     }
 
-    function getRandomWord() {
-        return getRandomElement(first3) + getRandomElement(last3);
+    function setRandomWord() {
+        const word = getRandomElement(first3) + getRandomElement(last3);
+        document.getElementById("password").textContent = word;
     }
   </script>
 </body>
