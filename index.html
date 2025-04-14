@@ -11,16 +11,21 @@
   </style>
 </head>
 <body>
-  <h1>Pick a Random Fruit!</h1>
-  <button onclick="showRandomFruit()">Show Fruit</button>
+  <h1>Generate two random fruits:</h1>
+  <button onclick="showRandomFruitCombo()">Generate</button>
   <div id="fruit"></div>
 
   <script>
     const fruits = ["Apple", "Banana", "Cherry", "Mango", "Pineapple", "Strawberry", "Peach"];
 
-    function showRandomFruit() {
-      const randomIndex = Math.floor(Math.random() * fruits.length);
-      document.getElementById("fruit").textContent = fruits[randomIndex];
+    function randomFruit() {
+        const randomIndex = Math.floor(Math.random() * fruits.length);
+        return fruits[randomIndex];
+    }
+
+    function showRandomFruitCombo() {
+      const fruitPair = randomFruit() + " " + randomFruit();
+      document.getElementById("fruit").textContent = fruitPair;
     }
   </script>
 </body>
