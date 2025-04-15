@@ -17,8 +17,23 @@
   <div id="password"></div>
 
   <script>
-    const first3 = ["and", "con", "for", "pro", "tha", "the"];
-    const last3  = ["and", "ent", "hat", "ing", "ion", "the"];
+    fetch('first3.txt')
+      .then(response => response.text())
+      .then(text => {
+        first3 = text.split('\n').map(f => f.trim()).filter(f => f);
+      })
+      .catch(error => {
+        console.error('Failed to load first3.txt:', error);
+      });
+
+    fetch('last3.txt')
+      .then(response => response.text())
+      .then(text => {
+        last3 = text.split('\n').map(f => f.trim()).filter(f => f);
+      })
+      .catch(error => {
+        console.error('Failed to load last3.txt:', error);
+      });
 
     function getRandomElement(arr) {
         const randomIndex = Math.floor(Math.random() * arr.length);
