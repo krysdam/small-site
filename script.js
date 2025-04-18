@@ -28,5 +28,5 @@ function getRandomElement(arr) {
 
 function setRandomWord() {
     const word = getRandomElement(first3) + getRandomElement(last3);
-    document.getElementById("password").textContent = word;
+    document.getElementById("password").value = word;
 }
