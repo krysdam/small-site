@@ -9,13 +9,12 @@
     body { font-family: sans-serif; text-align: center; padding: 50px; }
     button { padding: 10px 20px; font-size: 16px; }
     #password { margin-top: 20px; font-size: 24px; color: gold; }
-    button:disabled { background-color: red; cursor: not-allowed; }
-    button:not(:disabled) { background-color: green; }
+    button:disabled { background-color: gray; cursor: not-allowed; }
+    button:not(:disabled) { background-color: purple; }
   </style>
 </head>
 <body>
   <h1>Generate a short, memorable, insecure password:</h1>
-  <!-- Button should initially be disbled -->
   <button id="generate" disabled onclick="setRandomWord()">Generate</button>
   <div id="password"></div>
 
@@ -32,7 +31,6 @@
     });
 
     function loadList(fname) {
-      
         return fetch(fname)
             .then(response => response.text())
             .then(text => 
