@@ -30,3 +30,14 @@ function setRandomWord() {
     const word = getRandomElement(first3) + getRandomElement(last3);
     document.getElementById("password").value = word;
 }
+
+function copyToClipboard() {
+    const passwordField = document.getElementById("password");
+    navigator.clipboard.writeText(passwordField.value)
+        .then(() => {
+            alert("Password copied to clipboard: " + passwordField.value);
+        })
+        .catch(err => {
+            console.error("Failed to copy password: ", err);
+        }); alert("Password copied to clipboard: " + passwordField.value);
+}
