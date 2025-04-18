@@ -13,15 +13,19 @@
 </head>
 <body>
   <h1>Generate a short, memorable, insecure password:</h1>
-  <button onclick="setRandomWord()">Generate</button>
+  <!-- Button should initially be disbled -->
+  <button id="generate" onclick="setRandomWord()" disabled>Generate</button>
   <div id="password"></div>
 
   <script>
     let first3 = [];
     let last3 = [];
 
-    loadList('first3.txt').then(list => first3 = list);
-    loadList('last3.txt').then(list => last3 = list);
+    loadList('first3.txt')
+      .then(list => first3 = list);
+    loadList('last3.txt')
+      .then(list => last3 = list)
+      .then(document.getElementById("generate").disabled = false);
 
     function loadList(fname) {
         return fetch(fname)
