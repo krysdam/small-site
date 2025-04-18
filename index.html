@@ -39,7 +39,7 @@
                 text.split('\n').map(f => f.trim()).filter(f => f)
             )
             .catch(error => {
-                console.error('Failed to load ${fname}:', error);
+                console.error(`Failed to load ${fname}:`, error);
             })
     }
 
