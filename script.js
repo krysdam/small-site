@@ -8,6 +8,7 @@ Promise.all([
     loadList('last3.txt').then(list => last3 = list)
 ]).then(() => {
     document.getElementById("generate").disabled = false;
+    document.getElementById("copy").disabled = false;
 });
 
 function loadList(fname) {
