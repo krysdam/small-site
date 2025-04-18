@@ -9,20 +9,21 @@
     body { font-family: sans-serif; text-align: center; padding: 50px; }
     button { padding: 10px 20px; font-size: 16px; }
     #password { margin-top: 20px; font-size: 24px; color: gold; }
-    button:disabled { background-color: lightgray; cursor: not-allowed; }
-    button:not(:disabled) { background-color: lightblue; }
+    button:disabled { background-color: red; cursor: not-allowed; }
+    button:not(:disabled) { background-color: green; }
   </style>
 </head>
 <body>
   <h1>Generate a short, memorable, insecure password:</h1>
   <!-- Button should initially be disbled -->
-  <button id="generate" onclick="setRandomWord()" disabled>Generate</button>
+  <button id="generate" disabled onclick="setRandomWord()">Generate</button>
   <div id="password"></div>
 
   <script>
     let first3 = [];
     let last3 = [];
 
+    document.getElementById("generate").disabled = true;
     loadList('first3.txt')
       .then(list => first3 = list);
     loadList('last3.txt')
@@ -32,7 +33,7 @@
     function loadList(fname) {
       
         return fetch(fname)
-            .then(() => new Promise(resolve => setTimeout(resolve, 1000)))
+            .then(() => new Promise(resolve => setTimeout(resolve, 10000)))
             .then(response => response.text())
             .then(text => 
                 text.split('\n').map(f => f.trim()).filter(f => f)
