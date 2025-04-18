@@ -24,11 +24,12 @@
     let last3 = [];
 
     document.getElementById("generate").disabled = true;
-    loadList('first3.txt')
-      .then(list => first3 = list);
-    loadList('last3.txt')
-      .then(list => last3 = list)
-      .then(document.getElementById("generate").disabled = false);
+    Promise.all([
+      loadList('first3.txt').then(list => first3 = list),
+      loadList('last3.txt').then(list => last3 = list)
+    ]).then(() => {
+      document.getElementById("generate").disabled = false;
+    });
 
     function loadList(fname) {
       
