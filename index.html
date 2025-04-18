@@ -32,7 +32,7 @@
     function loadList(fname) {
       
         return fetch(fname)
-            .then(value => delayAndPass(1000, value))
+            .then(() => new Promise(resolve => setTimeout(resolve, 1000)))
             .then(response => response.text())
             .then(text => 
                 text.split('\n').map(f => f.trim()).filter(f => f)
