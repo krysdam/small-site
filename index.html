@@ -1,13 +1,22 @@
 <!-- This example page written with the help of ChatGPT -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Simple Password Generator</title>
   <link rel="icon" type="image/x-icon" href="quince.png">
   <style>
-    h1 { color: purple }
-    body { font-family: sans-serif; text-align: center; padding: 50px; }
+    h1 {
+      color: purple
+    }
+
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
     button {
       padding: 10px 20px;
       font-size: 16px;
@@ -15,17 +24,29 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     #password {
       margin-top: 20px;
       font-size: 24px;
       font-family: monospace;
       color: purple;
     }
-    button:disabled { background-color: palegoldenrod; cursor: not-allowed; }
-    button:not(:disabled) { background-color: gold; }
-    button:hover:not(:disabled) { background-color: orange; }
+
+    button:disabled {
+      background-color: palegoldenrod;
+      cursor: not-allowed;
+    }
+
+    button:not(:disabled) {
+      background-color: gold;
+    }
+
+    button:hover:not(:disabled) {
+      background-color: orange;
+    }
   </style>
 </head>
+
 <body>
   <h1>Generate a short, memorable, insecure password:</h1>
   <button id="generate" disabled onclick="setRandomWord()">Generate</button>
@@ -44,25 +65,26 @@
     });
 
     function loadList(fname) {
-        return fetch(fname)
-            .then(response => response.text())
-            .then(text => 
-                text.split('\n').map(f => f.trim()).filter(f => f)
-            )
-            .catch(error => {
-                console.error(`Failed to load ${fname}:`, error);
-            })
+      return fetch(fname)
+        .then(response => response.text())
+        .then(text =>
+          text.split('\n').map(f => f.trim()).filter(f => f)
+        )
+        .catch(error => {
+          console.error(`Failed to load ${fname}:`, error);
+        })
     }
 
     function getRandomElement(arr) {
-        const randomIndex = Math.floor(Math.random() * arr.length);
-        return arr[randomIndex];
+      const randomIndex = Math.floor(Math.random() * arr.length);
+      return arr[randomIndex];
     }
 
     function setRandomWord() {
-        const word = getRandomElement(first3) + getRandomElement(last3);
-        document.getElementById("password").textContent = word;
+      const word = getRandomElement(first3) + getRandomElement(last3);
+      document.getElementById("password").textContent = word;
     }
   </script>
 </body>
+
 </html>
