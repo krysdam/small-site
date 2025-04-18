@@ -26,9 +26,9 @@
     function loadList(fname) {
         return fetch(fname)
             .then(response => response.text())
-            .then(text => {
-                return text.split('\n').map(f => f.trim()).filter(f => f);
-            })
+            .then(text => 
+                text.split('\n').map(f => f.trim()).filter(f => f)
+            )
             .catch(error => {
                 console.error('Failed to load ${fname}:', error);
             })
